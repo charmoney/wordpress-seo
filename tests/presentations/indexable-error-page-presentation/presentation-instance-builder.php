@@ -3,6 +3,7 @@
 namespace Yoast\WP\Free\Tests\Presentations\Indexable_Error_Page_Presentation;
 
 use Mockery;
+use Yoast\WP\Free\Helpers\Canonical_Helper;
 use Yoast\WP\Free\Helpers\Current_Page_Helper;
 use Yoast\WP\Free\Helpers\Image_Helper;
 use Yoast\WP\Free\Helpers\Options_Helper;
@@ -46,6 +47,11 @@ trait Presentation_Instance_Builder {
 	protected $current_page_helper;
 
 	/**
+	 * @var Canonical_Helper|Mockery\Mock
+	 */
+	protected $canonical_helper;
+
+	/**
 	 * Builds an instance of Indexable_Error_Page_Presentation.
 	 */
 	protected function setInstance() {
@@ -55,6 +61,7 @@ trait Presentation_Instance_Builder {
 		$this->image_helper        = Mockery::mock( Image_Helper::class );
 		$this->robots_helper       = Mockery::mock( Robots_Helper::class );
 		$this->current_page_helper = Mockery::mock( Current_Page_Helper::class );
+		$this->canonical_helper    = Mockery::mock( Canonical_Helper::class );
 
 		$instance = new Indexable_Error_Page_Presentation();
 
@@ -63,7 +70,8 @@ trait Presentation_Instance_Builder {
 			$this->robots_helper,
 			$this->image_helper,
 			$this->options_helper,
-			$this->current_page_helper
+			$this->current_page_helper,
+			$this->canonical_helper
 		);
 	}
 }

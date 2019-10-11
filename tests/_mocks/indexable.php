@@ -39,4 +39,5 @@ class Indexable extends \Yoast\WP\Free\Models\Indexable {
 	public $twitter_title;
 	public $twitter_description;
 	public $twitter_image;
+	public $number_of_pages;
 }
